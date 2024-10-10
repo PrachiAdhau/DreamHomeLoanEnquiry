@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +28,7 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 @RequestMapping("/enquiry")
 public class EnquiryController {
 	
+
 	@Autowired
 	ServiceEnquiryInt sei;
 	// post method add
@@ -35,14 +40,21 @@ public class EnquiryController {
 	}
 	
 
+
 //	
 //	@DeleteMapping("/del/{applicant_Id}")
-//	public ResponseEntity<Enquiry> deleteSingleData(@PathVariable int applicant_Id){
+//	public ResponseEntity<String> deleteSingleData(@PathVariable int applicant_Id){
 //		
-//		Enquiry enq=sei.deleteSingle(applicant_Id);
-//		return new ResponseEntity<Enquiry>(enq,HttpStatus.OK) ;
+//	   sei.deleteSingle(applicant_Id);
+//		return new ResponseEntity<String>("delete data",HttpStatus.ACCEPTED) ;
 //	}
 		
+
+@GetMapping("/getsingledata/{id}")
+public  ResponseEntity<Enquiry> getSingleDataMethod(@PathVariable ("id") int id)
+{ Enquiry e =  sei.getSingleDataMethod(id);
+	return new ResponseEntity<Enquiry> (e,HttpStatus.OK);}
+
 
 	@GetMapping("/getAllData")
 	public ResponseEntity<List<Enquiry>> getAllData()
@@ -51,6 +63,5 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
 	}
-
 
 }

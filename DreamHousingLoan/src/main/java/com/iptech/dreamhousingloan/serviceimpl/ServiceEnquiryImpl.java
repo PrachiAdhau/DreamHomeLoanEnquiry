@@ -21,16 +21,22 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 		return save;
 	}
 
-//
+
 //	@Override
 //
-//	public Enquiry deleteSingle(int applicant_Id) {
-//		Enquiry enq=er.deleteByApplicant_Id(applicant_Id);
-//		return enq;
+//	public void deleteSingle(int applicant_Id) {
+//		er.deleteByApplicant_Id(applicant_Id);
+//		
 //	}
 
 
 	@Override
+
+
+	public Enquiry getSingleDataMethod(int id) {
+		Enquiry e= er.findById(id).get();
+		return e;}
+
 
 	public List<Enquiry> getAllData() {
 		

@@ -10,11 +10,11 @@ import jakarta.transaction.Transactional;
 
 @Repository
 public interface EnquiryRepository extends JpaRepository<Enquiry, Integer>{
-	
+//	
 //	@Modifying
 //	@Transactional
 //	
-//	public Enquiry deleteByApplicant_Id(int applicant_Id);
+//	public void deleteByApplicant_Id(int applicant_Id);
 //	
 
 }

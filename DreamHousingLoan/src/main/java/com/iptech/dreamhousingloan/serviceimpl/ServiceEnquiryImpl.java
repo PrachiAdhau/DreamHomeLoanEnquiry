@@ -18,24 +18,17 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 
 	@Autowired
 	EnquiryRepository er;
-//	@Autowired
-//	private JavaMailSender sender;
-//	
-//	@Value("${spring.mail.username}")
-//    private static String FORM_MAIL;
+	@Autowired
+	private JavaMailSender sender;
+	
+	@Value("${spring.mail.username}")
+    private static String FORM_MAIL;
 	
 
 	
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
-//		String adharNo= stu.getAdharNo();
-//		if(adharNo.length()==12)
-//		{
-//			System.out.println("valid adhar card no");
-//		}
-//		else {
-//			throw new InvalidMobileNo("InvalidAdharNo :"+adharNo);
-//		}
+
 		Enquiry save=er.save(e);
 		return save;
 	}
@@ -62,22 +55,41 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	}
 
 	@Override
-	public Enquiry editEnquiry(Enquiry e) {
-		Enquiry save=er.save(e);
-		return save;
+	public void editEnquiry(Enquiry e, int applicant_Id) {
+		Enquiry eq=er.findById(applicant_Id).get();
+		
+		if(null!=eq)
+		{
+			eq.setFirst_Name(e.getFirst_Name());
+			eq.setLast_Name(e.getLast_Name());
+			eq.setAge(e.getAge());
+			eq.setEmail(e.getEmail());
+			eq.setMobileNo(e.getMobileNo());
+			eq.setAlternateMobileNo(e.getAlternateMobileNo());
+			eq.setPancardNo(e.getPancardNo());
+			eq.setAdharNo(e.getAdharNo());
+			eq.setAddress(e.getAddress());
+			eq.setCity(e.getCity());
+			eq.setCibilScore(e.getCibilScore());
+			er.save(eq);
+		}
+		else
+		{
+			System.out.println("Data is not present");
+		}
 	}
 	
-//	@Override
-//	public String sendMail(String toEmail) {
-//		
-//        SimpleMailMessage simple= new SimpleMailMessage();
-//		
-//		simple.setTo(toEmail);
-//		simple.setFrom(FORM_MAIL);
-//		simple.setSubject("Dream housing loan process");
-//		simple.setText("****Your housing loan is sanctioned successfully****");
-//		
-//		sender.send(simple);
-//		return "mail send successfully";
-//	}
+	@Override
+	public String sendMail(String toEmail) {
+		
+        SimpleMailMessage simple= new SimpleMailMessage();
+		
+		simple.setTo(toEmail);
+		simple.setFrom(FORM_MAIL);
+		simple.setSubject("Dream housing loan process");
+		simple.setText("****Your housing loan is sanctioned successfully****");
+		
+		sender.send(simple);
+		return "mail send successfully";
+	}
 }

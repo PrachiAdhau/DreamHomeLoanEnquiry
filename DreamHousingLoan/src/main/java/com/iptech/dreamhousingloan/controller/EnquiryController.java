@@ -52,11 +52,12 @@ public class EnquiryController {
 		return new ResponseEntity<String>("delete data",HttpStatus.ACCEPTED) ;
 	}
 		
-	@PutMapping("/edit")
-	public ResponseEntity<Enquiry> updateData(@RequestBody Enquiry e)
+	@PutMapping("/edit/{applicant_Id}")
+	public ResponseEntity<String> updateData(@RequestBody Enquiry e,@PathVariable("applicant_Id")int applicant_Id)
+
      {
-    	Enquiry en=sei.editEnquiry(e);
-	    return new ResponseEntity<Enquiry>(en,HttpStatus.CREATED);
+    	sei.editEnquiry(e,applicant_Id);
+	    return new ResponseEntity<String>("Data updated",HttpStatus.CREATED);
 	}
 
 
@@ -74,11 +75,11 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
 	}
-//	@GetMapping("/send/{toEmail}")
-//	public ResponseEntity<String> sendMail(@PathVariable String toEmail)
-//	{
-//		String s=sei.sendMail(toEmail);
-//		return new ResponseEntity<String>(s,HttpStatus.OK);
-//	}
+	@GetMapping("/send/{toEmail}")
+	public ResponseEntity<String> sendMail(@PathVariable String toEmail)
+	{
+		String s=sei.sendMail(toEmail);
+		return new ResponseEntity<String>(s,HttpStatus.OK);
+	}
 
 }

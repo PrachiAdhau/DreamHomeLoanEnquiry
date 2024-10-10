@@ -7,5 +7,6 @@ import com.iptech.dreamhousingloan.model.Enquiry;
 
 @Repository
 public interface EnquiryRepository extends JpaRepository<Enquiry, Integer>{
+	
 
 }

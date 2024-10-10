@@ -18,7 +18,7 @@ public class EnquiryController {
 	
 	@Autowired
 	ServiceEnquiryInt sei;
-	
+	// post method add
 	@PostMapping("/save")
 	public ResponseEntity<Enquiry> addData(@RequestBody Enquiry e)
 	{

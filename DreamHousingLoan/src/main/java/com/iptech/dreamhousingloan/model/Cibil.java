@@ -14,4 +14,5 @@ public class Cibil {
 	private String cibilScoreDateandTime;
 	private String status;
 	private String cibilRemark;
+	
 }

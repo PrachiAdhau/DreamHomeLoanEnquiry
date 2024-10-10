@@ -12,6 +12,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	@Autowired
 	EnquiryRepository er;
 	
+	
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
 		Enquiry save=er.save(e);

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 @RequestMapping("/enquiry")
 public class EnquiryController {
 	
+
 	@Autowired
 	ServiceEnquiryInt sei;
 	// post method add
@@ -31,13 +34,18 @@ public class EnquiryController {
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/edit/{applicant_Id}")
-	public ResponseEntity<Enquiry> updateData(@PathVariable int applicant_Id)
+	@PutMapping("/edit")
+	public ResponseEntity<Enquiry> updateData(@RequestBody Enquiry e)
      {
-    	Enquiry en=sei.editEnquiry(applicant_Id);
-	    return new ResponseEntity<Enquiry>(en,HttpStatus.ACCEPTED);
+    	Enquiry en=sei.editEnquiry(e);
+	    return new ResponseEntity<Enquiry>(en,HttpStatus.CREATED);
 	}
 	
+@GetMapping("/getsingledata/{id}")
+public  ResponseEntity<Enquiry> getSingleDataMethod(@PathVariable ("id") int id)
+{ Enquiry e =  sei.getSingleDataMethod(id);
+	return new ResponseEntity<Enquiry> (e,HttpStatus.OK);}
+
 
 	@GetMapping("/getAllData")
 	public ResponseEntity<List<Enquiry>> getAllData()
@@ -45,7 +53,5 @@ public class EnquiryController {
 		List<Enquiry> list = sei.getAllData();
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 	}
-
-
 
 }

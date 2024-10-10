@@ -8,10 +8,14 @@ public interface ServiceEnquiryInt {
 
 	public Enquiry saveEnquiry(Enquiry e);
 
-	public Enquiry editEnquiry(int applicant_Id);
+	public Enquiry getSingleDataMethod(int id);
 
 	public List<Enquiry> getAllData();
 
+	public Enquiry editEnquiry(Enquiry e);
+
 	
+	
+
 
 }

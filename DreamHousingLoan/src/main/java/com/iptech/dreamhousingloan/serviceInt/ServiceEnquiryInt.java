@@ -11,6 +11,8 @@ public interface ServiceEnquiryInt {
 
 	public List<Enquiry> getAllData();
 
-	
+
+	Enquiry getSingleDataMethod(int id);
+
 
 }

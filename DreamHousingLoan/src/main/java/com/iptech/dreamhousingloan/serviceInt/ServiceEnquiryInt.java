@@ -11,8 +11,11 @@ public interface ServiceEnquiryInt {
 
 	public List<Enquiry> getAllData();
 
+	public Enquiry editEnquiry(Enquiry e);
 
 	Enquiry getSingleDataMethod(int id);
+	
+//	public String sendMail(String toEmail);
 
 
 }

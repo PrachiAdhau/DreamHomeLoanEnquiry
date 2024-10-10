@@ -23,9 +23,22 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 
 
 	@Override
+
+	public Enquiry getSingleDataMethod(int id) {
+		Enquiry e= er.findById(id).get();
+		return e;}
+
 	public List<Enquiry> getAllData() {
 		
 		return er.findAll();
+
 	}
+
+
+//	@Override
+//	public Enquiry updateData(int applicant_Id) {
+//		
+//		return er.saveAll(applicant_Id);
+//	}
 
 }

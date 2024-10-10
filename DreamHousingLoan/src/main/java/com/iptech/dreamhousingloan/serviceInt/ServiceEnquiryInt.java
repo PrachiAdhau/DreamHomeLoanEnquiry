@@ -12,7 +12,14 @@ public interface ServiceEnquiryInt {
 
 	public List<Enquiry> getAllData();
 
+
 	//public Enquiry updateData(int applicant_Id);
+
+	public Enquiry editEnquiry(Enquiry e);
+
+	
+	
+
 
 
 }

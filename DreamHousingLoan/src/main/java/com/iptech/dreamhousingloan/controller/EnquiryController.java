@@ -22,7 +22,7 @@ public class EnquiryController {
 	@PostMapping("/save")
 	public ResponseEntity<Enquiry> addData(@RequestBody Enquiry e)
 	{
-		Enquiry en=sei.saveEnquiry(e);
+		Enquiry en=sei.saveEnquiry(e); 
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
 	}
 	

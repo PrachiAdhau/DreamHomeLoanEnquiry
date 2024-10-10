@@ -1,5 +1,7 @@
 package com.iptech.dreamhousingloan.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,21 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 		return save;
 	}
 
+//
+//	@Override
+//
+//	public Enquiry deleteSingle(int applicant_Id) {
+//		Enquiry enq=er.deleteByApplicant_Id(applicant_Id);
+//		return enq;
+//	}
+
 
 	@Override
-	public Enquiry deleteSingle(int applicant_Id) {
-		Enquiry enq=er.deleteByApplicant_Id(applicant_Id);
-		return enq;
+
+	public List<Enquiry> getAllData() {
+		
+		return er.findAll();
+
 	}
 
 }

@@ -1,11 +1,17 @@
 package com.iptech.dreamhousingloan.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +34,22 @@ public class EnquiryController {
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
 	}
 	
-	
-	@DeleteMapping("/del/{applicant_Id}")
-	public ResponseEntity<Enquiry> deleteSingleData(@PathVariable int applicant_Id){
+
+//	
+//	@DeleteMapping("/del/{applicant_Id}")
+//	public ResponseEntity<Enquiry> deleteSingleData(@PathVariable int applicant_Id){
+//		
+//		Enquiry enq=sei.deleteSingle(applicant_Id);
+//		return new ResponseEntity<Enquiry>(enq,HttpStatus.OK) ;
+//	}
 		
-		Enquiry enq=sei.deleteSingle(applicant_Id);
-		return new ResponseEntity<Enquiry>(enq,HttpStatus.OK) ;
-		
+
+	@GetMapping("/getAllData")
+	public ResponseEntity<List<Enquiry>> getAllData()
+	{
+		List<Enquiry> list = sei.getAllData();
+		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
+
 	}
 
 

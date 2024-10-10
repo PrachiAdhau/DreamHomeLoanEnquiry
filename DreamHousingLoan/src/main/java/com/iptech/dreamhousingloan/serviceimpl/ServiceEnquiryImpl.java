@@ -1,5 +1,7 @@
 package com.iptech.dreamhousingloan.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,13 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	public Enquiry saveEnquiry(Enquiry e) {
 		Enquiry save=er.save(e);
 		return save;
+	}
+
+
+	@Override
+	public List<Enquiry> getAllData() {
+		
+		return er.findAll();
 	}
 
 }

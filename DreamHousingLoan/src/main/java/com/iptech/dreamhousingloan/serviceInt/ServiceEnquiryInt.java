@@ -17,7 +17,7 @@ public void deleteSingle(int applicant_Id);
 
 	public List<Enquiry> getAllData();
 
-	public Enquiry editEnquiry(Enquiry e);
+	public void editEnquiry(Enquiry e, int applicant_Id);
 
 	
 	

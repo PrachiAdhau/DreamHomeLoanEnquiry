@@ -13,6 +13,8 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface EnquiryRepository extends JpaRepository<Enquiry, Integer>{
 
+
+
 	
 
 

@@ -1,6 +1,7 @@
 package com.iptech.dreamhousingloan.serviceimpl;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,12 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 			return enquiry;
 		}
 		return enquires.get();
+	}
+	
+	public List<Enquiry> getAllData() {
+		
+		return er.findAll();
+
 	}
 
 }

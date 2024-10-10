@@ -10,12 +10,17 @@ public interface ServiceEnquiryInt {
 
 
 
-//	public void deleteSingle(int applicant_Id);
+public void deleteSingle(int applicant_Id);
 
 	public Enquiry getSingleDataMethod(int id);
 
 
 	public List<Enquiry> getAllData();
+
+	public Enquiry editEnquiry(Enquiry e);
+
+	
+	
 
 
 

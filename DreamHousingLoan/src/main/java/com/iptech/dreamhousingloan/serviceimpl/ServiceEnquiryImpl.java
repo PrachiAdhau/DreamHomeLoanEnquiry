@@ -28,18 +28,27 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
-//		String mobileno= stu.getMobileno();
-//		if(mobileno.length()==10)
+//		String adharNo= stu.getAdharNo();
+//		if(adharNo.length()==12)
 //		{
-//			System.out.println("valid mobile no");
+//			System.out.println("valid adhar card no");
 //		}
 //		else {
-//			throw new InvalidMobileNo("InvalidMobileNo :"+mobileno);
+//			throw new InvalidMobileNo("InvalidAdharNo :"+adharNo);
 //		}
 		Enquiry save=er.save(e);
 		return save;
 	}
 
+	@Override
+
+	public void deleteSingle(int applicant_Id) {
+		er.deleteById(applicant_Id);
+		
+	}
+
+
+	@Override
 
 	public Enquiry getSingleDataMethod(int id) {
 		Enquiry e= er.findById(id).get();

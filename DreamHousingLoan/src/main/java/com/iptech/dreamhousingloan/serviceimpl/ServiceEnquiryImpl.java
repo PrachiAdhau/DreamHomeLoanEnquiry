@@ -10,8 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 //import org.springframework.beans.factory.annotation.Value;
 
+
 import org.springframework.stereotype.Service;
+
+
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+
 
 
 
@@ -20,7 +24,12 @@ import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 //import org.springframework.stereotype.Service;
 
 //import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+
+import com.iptech.dreamhousingloan.exception.InvalidAgeException;
+
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 import com.iptech.dreamhousingloan.model.Enquiry;
@@ -52,6 +61,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :" + adharNo);
 		}
+		
+		
 
 		if (e.getFirst_Name() != e.getFirst_Name().toUpperCase()) {
 			String name = e.getFirst_Name().toUpperCase();
@@ -75,6 +86,18 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			throw new invalidEmailException("invalidEmailException " + email);
 		}
 
+
+		// Age validation
+	    if (e.getAge() < 18 || e.getAge() > 60) {
+	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
+	    }
+	    else
+	    {
+	    	System.out.println("Age is valid");
+	    }
+
+	
+
 		String mobileNo=String.valueOf(e.getMobileNo());
 		if(mobileNo.length()==10) {
 			System.out.println("valid no"+mobileNo);
@@ -88,6 +111,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		return save;
 
 	}
+	
+	
 
 	@Override
 
@@ -136,6 +161,28 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			System.out.println("Data is not present");
 		}
+
+	
+/*	@Override
+	public String sendMail(String toEmail) {
+		
+        SimpleMailMessage simple= new SimpleMailMessage();
+		
+		simple.setTo(toEmail);
+		simple.setFrom(FORM_MAIL);
+		simple.setSubject("Dream housing loan process");
+		simple.setText("****Your housing loan is sanctioned successfully****");
+		
+		sender.send(simple);
+		return "mail send successfully";
+	}*/
+
+
+	
+
+	
+
+
 
 	}
 

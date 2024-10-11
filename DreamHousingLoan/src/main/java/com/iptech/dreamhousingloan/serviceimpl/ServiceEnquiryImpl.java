@@ -99,11 +99,11 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	
 
 
-// public String sendMail(String toEmail) {
-//	  
-//	 SimpleMailMessage simple= new SimpleMailMessage();
-//	  
-//	  simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+ //public String sendMail(Enquiry e,int applicant_Id) {
+//Enquiry eq=er.findById(applicant_Id).get();	  
+	 //SimpleMailMessage simple= new SimpleMailMessage();
+	  
+	 // simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
 //	  simple.setSubject("Dream housing loan process");
 //	  simple.setText("****Your housing loan is sanctioned successfully****");
 //	  

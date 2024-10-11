@@ -8,8 +8,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
-import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
+
+import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
@@ -42,6 +44,13 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+		String email=e.getEmail();
+		if(e.getEmail().endsWith("@gmail.com")) {
+			System.out.println("gmail is correct");
+		}else {
+			throw new invalidEmailException("invalidEmailException "+email);
+		}
+	
 
 		Enquiry save = er.save(e);
 		return save;

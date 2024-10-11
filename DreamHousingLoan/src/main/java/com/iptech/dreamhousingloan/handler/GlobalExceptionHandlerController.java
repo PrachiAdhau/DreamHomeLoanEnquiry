@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
+import com.iptech.dreamhousingloan.exception.InvalidPancardException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 
@@ -33,6 +34,12 @@ public class GlobalExceptionHandlerController {
 		public ResponseEntity<String>handelinvalidMobileNo(InvalidMobileNoException inm)
 		{
 			String msg=inm.getMessage();
+			return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
+		}
+		@ExceptionHandler(InvalidPancardException.class)
+		public ResponseEntity<String>handelInvalidPancardException1(InvalidPancardException ipn)
+		{
+			String msg=ipn.getMessage();
 			return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 		}
 	}

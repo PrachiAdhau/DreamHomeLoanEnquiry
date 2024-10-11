@@ -80,7 +80,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	}
 	
 	@Override
-	public String sendMail(String toEmail) {
+	/*public String sendMail(String toEmail) {
 		
         SimpleMailMessage simple= new SimpleMailMessage();
 		
@@ -91,5 +91,5 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 		
 		sender.send(simple);
 		return "mail send successfully";
-	}
+	}*/
 }

@@ -18,7 +18,7 @@ public void deleteSingle(int applicant_Id);
 	public void editEnquiry(Enquiry e, int applicant_Id);
 
 	
-	public String sendMail(String toEmail);
+	//public String sendMail(String toEmail);
 
 
 

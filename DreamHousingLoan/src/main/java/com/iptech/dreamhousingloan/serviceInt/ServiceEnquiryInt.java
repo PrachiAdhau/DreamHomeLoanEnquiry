@@ -14,6 +14,8 @@ public interface ServiceEnquiryInt {
 
 	public List<Enquiry> getAllData();
 
+	public void editEnquiry(Enquiry e, int applicant_Id);
+
 	public Enquiry editEnquiry(Enquiry e);
 
 }

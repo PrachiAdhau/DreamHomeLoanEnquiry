@@ -45,10 +45,19 @@ public class EnquiryController {
 		return new ResponseEntity<String>("delete data", HttpStatus.ACCEPTED);
 	}
 
+
 	@PutMapping("/edit")
 	public ResponseEntity<Enquiry> updateData(@RequestBody Enquiry e) {
 		Enquiry en = sei.editEnquiry(e);
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
+		}
+
+	@PutMapping("/edit/{applicant_Id}")
+	public ResponseEntity<String> updateData(@RequestBody Enquiry e,@PathVariable("applicant_Id")int applicant_Id)
+     {
+    	sei.editEnquiry(e,applicant_Id);
+	    return new ResponseEntity<String>("Data updated",HttpStatus.CREATED);
+
 	}
 
 	@GetMapping("/getsingledata/{id}")
@@ -63,5 +72,14 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list, HttpStatus.OK);
 
 	}
+	
+//	@ExceptionHandler( MobileNumberNotFound.class)
+//	public ResponseEntity<String> mobileNoHander( MobileNumberNotFound mnd) {
+//		
+//	String msg=	mnd.getMessage();
+//			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
+//	}
+
+
 
 }

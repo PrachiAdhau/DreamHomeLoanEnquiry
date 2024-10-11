@@ -3,11 +3,12 @@ package com.iptech.dreamhousingloan.serviceimpl;
 import java.util.List;
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
 import org.springframework.stereotype.Service;
+import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -17,16 +18,30 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 
-	 @Autowired 
-	 EnquiryRepository er;
+
 	  
-	  @Autowired private JavaMailSender sender;
+	  //@Autowired private JavaMailSender sender;
 	  
-	  @Value("${spring.mail.username}") private static String FORM_MAIL;
+	 // @Value("${spring.mail.username}") private static String FORM_MAIL;
 	 
+
+	@Autowired
+	EnquiryRepository er;
+
+
 
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
+		// Adhar number exception
+		String adharNo= String.valueOf(e.getAdharNo());
+		if(adharNo.length()==12)
+		{
+			
+			System.out.println("valid adhar card no");
+		}
+		else {
+			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
+		}
 
 		Enquiry save = er.save(e);
 		return save;
@@ -72,19 +87,24 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			System.out.println("Data is not present");
 		}
-	}
+	
 
- public String sendMail(String toEmail) {
-	  
-	 SimpleMailMessage simple= new SimpleMailMessage();
-	  
-	  simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
-	  simple.setSubject("Dream housing loan process");
-	  simple.setText("****Your housing loan is sanctioned successfully****");
-	  
-	  sender.send(simple); 
-	  
-	  return "mail send successfully"; 
-	 
+
+// public String sendMail(String toEmail) {
+//	  
+//	 SimpleMailMessage simple= new SimpleMailMessage();
+//	  
+//	  simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+//	  simple.setSubject("Dream housing loan process");
+//	  simple.setText("****Your housing loan is sanctioned successfully****");
+//	  
+//	  sender.send(simple); 
+//	  
+//	  return "mail send successfully"; 
+//	 
 }
+
 }
+	
+
+

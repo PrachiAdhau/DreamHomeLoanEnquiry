@@ -35,8 +35,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 
 	@Override
 
-<<<<<<< HEAD
-=======
+
+
 	public void deleteSingle(int applicant_Id) {
 		er.deleteById(applicant_Id);
 		
@@ -45,7 +45,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 
 	@Override
 
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
+
 	public Enquiry getSingleDataMethod(int id) {
 		Enquiry e= er.findById(id).get();
 		return e;}

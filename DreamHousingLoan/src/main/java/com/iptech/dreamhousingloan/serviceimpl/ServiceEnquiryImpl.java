@@ -47,6 +47,24 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+
+//written by nisha
+		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
+		{ String name= e.getFirst_Name().toUpperCase();
+			e.setFirst_Name(name);
+			}
+		else {
+			e.setFirst_Name(e.getFirst_Name());
+		}
+		if(e.getLast_Name()!=e.getLast_Name().toUpperCase())
+		{ String lname= e.getLast_Name().toUpperCase();
+			e.setLast_Name(lname);
+			}
+		else {
+			e.setLast_Name(e.getLast_Name());
+		}
+//
+
 		String email=e.getEmail();
 		if(e.getEmail().endsWith("@gmail.com")) {
 			System.out.println("gmail is correct");
@@ -71,12 +89,15 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 	@Override
 
+
+
 	public void deleteSingle(int applicant_Id) {
 		er.deleteById(applicant_Id);
 
 	}
 
 	@Override
+
 
 	public Enquiry getSingleDataMethod(int id) {
 		Enquiry e = er.findById(id).get();

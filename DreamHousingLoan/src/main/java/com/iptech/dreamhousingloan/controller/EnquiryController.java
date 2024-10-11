@@ -80,4 +80,9 @@ public class EnquiryController {
 	 * sendMail(@PathVariable String toEmail) { String s=sei.sendMail(toEmail);
 	 * return new ResponseEntity<String>(s,HttpStatus.OK); }
 	 */
+	
+	public void m1()
+	{
+		System.out.println("m1 method");
+	}
 }

@@ -2,12 +2,16 @@ package com.iptech.dreamhousingloan.serviceimpl;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.mail.SimpleMailMessage;
 //import org.springframework.mail.javamail.JavaMailSender;
+
+import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
+import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
 import com.iptech.dreamhousingloan.exception.MobileNumberNotFound;
 import com.iptech.dreamhousingloan.model.Enquiry;
@@ -22,15 +26,21 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	EnquiryRepository er;
 
 
+
 	  
 	 // @Autowired private JavaMailSender sender;
 	  
 	//  @Value("${spring.mail.username}") private static String FORM_MAIL;
 	 
 
+	
+
+
+
 
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
+
 		
 		long num=e.getMobileNo();
 		 
@@ -43,22 +53,36 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			
 		}
 		while(num!=0) ;
-
 		if(count==10)
 		{
-	  return   er.save(e);
+	 // return   er.save(e);
+			System.out.println("valid mobile  no");
 	
 	    }
 		else 
 		{
-			 throw new MobileNumberNotFound("particular Enquiry not found:" );
+			 throw new MobileNumberNotFound("particular Enquiry not found:");
 		}
 			
+		
+
+		// Adhar number exception
+		String adharNo= String.valueOf(e.getAdharNo());
+		if(adharNo.length()==12)
+		{
+			
+			System.out.println("valid adhar card no");
 		}
+		else {
+			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
+		}
+		Enquiry save = er.save(e);
+		return save;
+
+	}
 
 
-//		Enquiry save = er.save(e);
-//		return save;
+		
 //	}
 
 	@Override
@@ -109,6 +133,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 	}
 
+
 	// @Override
 	/*
 	 * public String sendMail(String toEmail) {
@@ -125,4 +150,5 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 
 	
+
 }

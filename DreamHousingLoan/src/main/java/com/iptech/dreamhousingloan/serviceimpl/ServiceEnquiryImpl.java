@@ -3,10 +3,7 @@ package com.iptech.dreamhousingloan.serviceimpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
 import org.springframework.stereotype.Service;
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
@@ -82,7 +79,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}
 	}
 
-<<<<<<< HEAD
+
 	
 /*	@Override
 	public String sendMail(String toEmail) {
@@ -100,9 +97,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 
 	
-=======
 
 	
 
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
+
 }

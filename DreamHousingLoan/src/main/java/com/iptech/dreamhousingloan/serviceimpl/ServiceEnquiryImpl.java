@@ -1,17 +1,24 @@
 package com.iptech.dreamhousingloan.serviceimpl;
 
 import java.util.List;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+
+import com.iptech.dreamhousingloan.exception.InvalidAgeException;
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
+
 import com.iptech.dreamhousingloan.exception.InvalidPancardException;
+
+
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -45,6 +52,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+		
+		
 
 //written by nisha
 		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
@@ -69,6 +78,18 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}else {
 			throw new invalidEmailException("invalidEmailException "+email);
 		}
+
+		// Age validation
+	    if (e.getAge() < 18 || e.getAge() > 60) {
+	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
+	    }
+	    else
+	    {
+	    	System.out.println("Age is valid");
+	    }
+
+	
+
 		String mobileNo=String.valueOf(e.getMobileNo());
 		if(mobileNo.length()==10) {
 			System.out.println("valid no"+mobileNo);
@@ -91,9 +112,12 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			throw new InvalidPancardException("InvalidPancardException  "+pancardNo);
 		}
 
+
 		Enquiry save = er.save(e);
 		return save;
 	}
+	
+	
 
 	@Override
 
@@ -139,6 +163,25 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			System.out.println("Data is not present");
 		}
 	
+/*	@Override
+	public String sendMail(String toEmail) {
+		
+        SimpleMailMessage simple= new SimpleMailMessage();
+		
+		simple.setTo(toEmail);
+		simple.setFrom(FORM_MAIL);
+		simple.setSubject("Dream housing loan process");
+		simple.setText("****Your housing loan is sanctioned successfully****");
+		
+		sender.send(simple);
+		return "mail send successfully";
+	}*/
+
+
+	
+
+	
+
 
 
 	 //SimpleMailMessage simple= new SimpleMailMessage();

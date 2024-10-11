@@ -17,18 +17,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 
 
 import org.springframework.web.bind.annotation.PostMapping;
+
+
 import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
+
+
 
 @RestController
 @RequestMapping("/enquiry")
@@ -46,6 +50,7 @@ public class EnquiryController {
 	}
 		
 	@DeleteMapping("/del/{applicant_Id}")
+	
 	public ResponseEntity<String> deleteSingleData(@PathVariable int applicant_Id){
 		
 	   sei.deleteSingle(applicant_Id);
@@ -74,15 +79,27 @@ public class EnquiryController {
 		List<Enquiry> list = sei.getAllData();
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
+
+
+
 	}
-	/*
-	 * @GetMapping("/send/{toEmail}") public ResponseEntity<String>
-	 * sendMail(@PathVariable String toEmail) { String s=sei.sendMail(toEmail);
-	 * return new ResponseEntity<String>(s,HttpStatus.OK); }
-	 */
 	
-	public void m1()
-	{
-		System.out.println("m1 method");
-	}
-}
+//	  @GetMapping("/send/{toEmail}") public ResponseEntity<String>sendMail(@PathVariable String toEmail) { 
+//		  
+//		  String s=sei.sendMail(toEmail);
+//		  
+//	  return new ResponseEntity<String>(s,HttpStatus.OK); 
+//	  
+//	  }
+	 
+	
+
+	
+}	
+
+
+
+
+
+
+

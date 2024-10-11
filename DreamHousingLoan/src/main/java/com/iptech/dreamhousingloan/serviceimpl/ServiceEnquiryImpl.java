@@ -1,11 +1,17 @@
 package com.iptech.dreamhousingloan.serviceimpl;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
+
+
+import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
@@ -13,6 +19,13 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 @Service
 public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
+
+
+	  
+	  //@Autowired private JavaMailSender sender;
+	  
+	 // @Value("${spring.mail.username}") private static String FORM_MAIL;
+	 
 
 	@Autowired
 	EnquiryRepository er;
@@ -31,6 +44,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+
 //written by nisha
 		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
 		{ String name= e.getFirst_Name().toUpperCase();
@@ -47,6 +61,15 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			e.setLast_Name(e.getLast_Name());
 		}
 //
+
+		String email=e.getEmail();
+		if(e.getEmail().endsWith("@gmail.com")) {
+			System.out.println("gmail is correct");
+		}else {
+			throw new invalidEmailException("invalidEmailException "+email);
+		}
+	
+
 		Enquiry save = er.save(e);
 		return save;
 	}
@@ -94,9 +117,24 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			System.out.println("Data is not present");
 		}
-	}
-
-
 	
 
+
+// public String sendMail(String toEmail) {
+//	  
+//	 SimpleMailMessage simple= new SimpleMailMessage();
+//	  
+//	  simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+//	  simple.setSubject("Dream housing loan process");
+//	  simple.setText("****Your housing loan is sanctioned successfully****");
+//	  
+//	  sender.send(simple); 
+//	  
+//	  return "mail send successfully"; 
+//	 
 }
+
+}
+	
+
+

@@ -75,11 +75,14 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
 	}
-	@GetMapping("/send/{toEmail}")
-	public ResponseEntity<String> sendMail(@PathVariable String toEmail)
+	/*
+	 * @GetMapping("/send/{toEmail}") public ResponseEntity<String>
+	 * sendMail(@PathVariable String toEmail) { String s=sei.sendMail(toEmail);
+	 * return new ResponseEntity<String>(s,HttpStatus.OK); }
+	 */
+	
+	public void m1()
 	{
-		String s=sei.sendMail(toEmail);
-		return new ResponseEntity<String>(s,HttpStatus.OK);
+		System.out.println("m1 method");
 	}
-
 }

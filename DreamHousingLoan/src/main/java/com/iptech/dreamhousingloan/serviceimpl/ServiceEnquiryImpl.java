@@ -4,11 +4,15 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
+
 
 @Service
 public class ServiceEnquiryImpl implements ServiceEnquiryInt {
@@ -16,8 +20,17 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	@Autowired
 	EnquiryRepository er;
 
+
+	  
+	 // @Autowired private JavaMailSender sender;
+	  
+	//  @Value("${spring.mail.username}") private static String FORM_MAIL;
+	 
+
+
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
+
 		Enquiry save = er.save(e);
 		return save;
 	}
@@ -41,8 +54,6 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		return er.findAll();
 
 	}
-
-
 	@Override
 
 	public Enquiry editEnquiry(Enquiry e) {
@@ -51,10 +62,9 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 	}
 	public void editEnquiry(Enquiry e, int applicant_Id) {
-		Enquiry eq=er.findById(applicant_Id).get();
-		
-		if(null!=eq)
-		{
+		Enquiry eq = er.findById(applicant_Id).get();
+
+		if (null != eq) {
 			eq.setFirst_Name(e.getFirst_Name());
 			eq.setLast_Name(e.getLast_Name());
 			eq.setAge(e.getAge());
@@ -67,12 +77,23 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			eq.setCity(e.getCity());
 			eq.setCibilScore(e.getCibilScore());
 			er.save(eq);
-		}
-		else
-		{
+		} else {
 			System.out.println("Data is not present");
 		}
 
 	}
+
+	// @Override
+	/*
+	 * public String sendMail(String toEmail) {
+	 * 
+	 * SimpleMailMessage simple= new SimpleMailMessage();
+	 * 
+	 * simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+	 * simple.setSubject("Dream housing loan process");
+	 * simple.setText("****Your housing loan is sanctioned successfully****");
+	 * 
+	 * sender.send(simple); return "mail send successfully"; }
+	 */
 
 }

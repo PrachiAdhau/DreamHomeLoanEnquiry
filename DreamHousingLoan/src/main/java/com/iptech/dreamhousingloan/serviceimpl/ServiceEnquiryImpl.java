@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+import com.iptech.dreamhousingloan.exception.InvalidAgeException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -39,6 +40,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+		
+		
 
 //written by nisha
 		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
@@ -63,11 +66,18 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}else {
 			throw new invalidEmailException("invalidEmailException "+email);
 		}
+		// Age validation
+	    if (e.getAge() < 18 || e.getAge() > 60) {
+	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age should be between 18 and 60.");
+	    }
+
 	
 
 		Enquiry save = er.save(e);
 		return save;
 	}
+	
+	
 
 	@Override
 

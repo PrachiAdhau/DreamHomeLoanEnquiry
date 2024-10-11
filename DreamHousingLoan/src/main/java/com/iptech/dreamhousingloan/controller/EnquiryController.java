@@ -63,11 +63,11 @@ public class EnquiryController {
 		
 
 
-	@PutMapping("/edit")
-	public ResponseEntity<Enquiry> updateData(@RequestBody Enquiry e)
+	@PutMapping("/edit/{applicant_Id}")
+	public ResponseEntity<String> updateData(@RequestBody Enquiry e,@PathVariable("applicant_Id")int applicant_Id)
      {
-    	Enquiry en=sei.editEnquiry(e);
-	    return new ResponseEntity<Enquiry>(en,HttpStatus.CREATED);
+    	sei.editEnquiry(e,applicant_Id);
+	    return new ResponseEntity<String>("Data updated",HttpStatus.CREATED);
 	}
 	
 
@@ -85,21 +85,7 @@ public  ResponseEntity<Enquiry> getSingleDataMethod(@PathVariable ("id") int id)
 
 
 	}
-	@PutMapping("/update/{applicant_Id}")
-	public ResponseEntity<Enquiry> update(@RequestPart ("applicant_Id") int applicant_Id)
-	{
-		Enquiry en=sei.updatedata(applicant_Id);
-		return new ResponseEntity<Enquiry> (en,HttpStatus.OK);
-		
-		
-	}
-
-
 }
-
-
-	
-	
 	
 	
 	

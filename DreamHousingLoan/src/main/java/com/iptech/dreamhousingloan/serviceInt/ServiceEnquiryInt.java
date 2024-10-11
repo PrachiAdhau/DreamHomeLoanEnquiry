@@ -20,11 +20,12 @@ public void deleteSingle(int applicant_Id);
 
 	//public Enquiry updateData(int applicant_Id);
 
-	public Enquiry editEnquiry(Enquiry e);
+	//public Enquiry editEnquiry(Enquiry e);
+
+	public void editEnquiry(Enquiry e, int applicant_Id);
 
 
-
-	public Enquiry updatedata(int applicant_Id);
+	//public Enquiry updatedata(int applicant_Id);
 
 	
 	

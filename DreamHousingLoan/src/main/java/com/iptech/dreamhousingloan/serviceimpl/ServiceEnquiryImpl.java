@@ -51,22 +51,38 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 
 
 
-	@Override
-	public Enquiry editEnquiry(Enquiry e) {
-		Enquiry save=er.save(e);
-		return save;
-	}
 
 
 
 	@Override
-	public Enquiry updatedata(int applicant_Id) {
-		Enquiry update=er.updateById(applicant_Id);
-		return update;
+	public void editEnquiry(Enquiry e, int applicant_Id) {
+		Enquiry eq=er.findById(applicant_Id).get();
+		
+		if(null!=eq)
+		{
+			eq.setFirst_Name(e.getFirst_Name());
+			eq.setLast_Name(e.getLast_Name());
+			eq.setAge(e.getAge());
+			eq.setEmail(e.getEmail());
+			eq.setMobileNo(e.getMobileNo());
+			eq.setAlternateMobileNo(e.getAlternateMobileNo());
+			eq.setPancardNo(e.getPancardNo());
+			eq.setAdharNo(e.getAdharNo());
+			eq.setAddress(e.getAddress());
+			eq.setCity(e.getCity());
+			eq.setCibilScore(e.getCibilScore());
+			er.save(eq);
+		}
+		else
+		{
+			System.out.println("Data is not present");
+		}
 	}
+
+}
 
 
 	
 
 
-}
+

@@ -6,7 +6,9 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 
@@ -22,9 +24,10 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 
 	  
-	  //@Autowired private JavaMailSender sender;
+	  @Autowired private JavaMailSender sender;
 	  
-	 // @Value("${spring.mail.username}") private static String FORM_MAIL;
+	  @Value("${spring.mail.username}") 
+	  private static String FORM_MAIL;
 	 
 
 	@Autowired
@@ -53,7 +56,17 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	
 
 		Enquiry save = er.save(e);
+		 SimpleMailMessage simple= new SimpleMailMessage();
+			simple.setTo(e.getEmail());
+			simple.setFrom(FORM_MAIL);
+			simple.setSubject("Dream housing loan application process");
+			simple.setText("****Your housing loan sanctioned successfully****");
+			
+			sender.send(simple);
 		return save;
+		
+		
+		
 	}
 
 	@Override

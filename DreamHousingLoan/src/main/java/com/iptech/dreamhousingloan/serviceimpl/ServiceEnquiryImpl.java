@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.mail.SimpleMailMessage;
 //import org.springframework.mail.javamail.JavaMailSender;
 
-import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.stereotype.Service;
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
-import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+//import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 

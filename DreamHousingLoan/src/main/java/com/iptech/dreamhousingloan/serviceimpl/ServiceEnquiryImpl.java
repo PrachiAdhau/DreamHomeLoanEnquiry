@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 import com.iptech.dreamhousingloan.model.Enquiry;
@@ -65,12 +66,23 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			e.setLast_Name(e.getLast_Name());
 		}
 
+
+
 		String email = e.getEmail();
 		if (e.getEmail().endsWith("@gmail.com")) {
 			System.out.println("gmail is correct");
 		} else {
 			throw new invalidEmailException("invalidEmailException " + email);
 		}
+
+		String mobileNo=String.valueOf(e.getMobileNo());
+		if(mobileNo.length()==10) {
+			System.out.println("valid no"+mobileNo);
+		}
+		else {
+			throw new InvalidMobileNoException("invalidMobileNoException  "+mobileNo);
+		}
+
 
 		Enquiry save = er.save(e);
 		return save;
@@ -140,11 +152,9 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	 * sender.send(simple); return "mail send successfully"; }
 	 */
 
-// public String sendMail(String toEmail) {
-//	  
-//	 SimpleMailMessage simple= new SimpleMailMessage();
-//	  
-//	  simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+	 //SimpleMailMessage simple= new SimpleMailMessage();
+	  
+	 // simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
 //	  simple.setSubject("Dream housing loan process");
 //	  simple.setText("****Your housing loan is sanctioned successfully****");
 //	  

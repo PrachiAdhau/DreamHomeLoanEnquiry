@@ -1,5 +1,9 @@
 package com.iptech.dreamhousingloan.model;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
@@ -16,3 +20,5 @@ public class Cibil {
 	private String cibilRemark;
 	
 }
+
+

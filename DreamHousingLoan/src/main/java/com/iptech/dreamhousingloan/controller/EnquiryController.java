@@ -83,19 +83,14 @@ public class EnquiryController {
 
 
 	}
-	
-//	  @GetMapping("/send/{toEmail}") public ResponseEntity<String>sendMail(@PathVariable String toEmail) { 
-//		  
-//		  String s=sei.sendMail(toEmail);
-//		  
-//	  return new ResponseEntity<String>(s,HttpStatus.OK); 
-//	  
-//	  }
+
+}	
 	 
 	
 
 	
-}	
+
+
 
 
 

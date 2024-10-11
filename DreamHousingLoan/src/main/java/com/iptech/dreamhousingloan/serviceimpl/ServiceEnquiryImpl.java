@@ -2,18 +2,20 @@ package com.iptech.dreamhousingloan.serviceimpl;
 
 import java.util.List;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+
 import org.springframework.stereotype.Service;
 
-
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+
+import com.iptech.dreamhousingloan.exception.InvalidAgeException;
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -48,6 +50,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
+		
+		
 
 //written by nisha
 		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
@@ -72,6 +76,18 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}else {
 			throw new invalidEmailException("invalidEmailException "+email);
 		}
+
+		// Age validation
+	    if (e.getAge() < 18 || e.getAge() > 60) {
+	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
+	    }
+	    else
+	    {
+	    	System.out.println("Age is valid");
+	    }
+
+	
+
 		String mobileNo=String.valueOf(e.getMobileNo());
 		if(mobileNo.length()==10) {
 			System.out.println("valid no"+mobileNo);
@@ -79,6 +95,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidMobileNoException("invalidMobileNoException  "+mobileNo);
 		}
+
 
 		Enquiry save = er.save(e);
 		 SimpleMailMessage simple= new SimpleMailMessage();
@@ -93,6 +110,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		
 		
 	}
+	
+	
 
 	@Override
 
@@ -137,19 +156,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			System.out.println("Data is not present");
 		}
-	
-
-
-	 //SimpleMailMessage simple= new SimpleMailMessage();
-	  
-	 // simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
-//	  simple.setSubject("Dream housing loan process");
-//	  simple.setText("****Your housing loan is sanctioned successfully****");
-//	  
-//	  sender.send(simple); 
-//	  
-//	  return "mail send successfully"; 
-//	 
+	 
 }
 
 }

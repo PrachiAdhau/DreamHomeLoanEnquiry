@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+
+import com.iptech.dreamhousingloan.exception.InvalidAgeException;
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 
@@ -29,6 +33,15 @@ public class GlobalExceptionHandlerController {
 		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 	}
 	
+
+	@ExceptionHandler(InvalidAgeException.class)
+	public ResponseEntity<String> invalidAgeHandle(InvalidAgeException aie)
+	{
+		String msg=aie.getMessage();
+		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
+	}
+
+
 		@ExceptionHandler(InvalidMobileNoException.class)
 		public ResponseEntity<String>handelinvalidMobileNo(InvalidMobileNoException inm)
 		{

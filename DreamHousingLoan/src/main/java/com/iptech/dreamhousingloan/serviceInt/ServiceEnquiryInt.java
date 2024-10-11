@@ -20,7 +20,7 @@ public void deleteSingle(int applicant_Id);
 
 	
 	
-	//public String sendMail(String toEmail);
+	
 
 
 

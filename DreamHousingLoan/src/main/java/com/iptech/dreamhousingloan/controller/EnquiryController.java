@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iptech.dreamhousingloan.exception.MobileNumberNotFound;
+
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 

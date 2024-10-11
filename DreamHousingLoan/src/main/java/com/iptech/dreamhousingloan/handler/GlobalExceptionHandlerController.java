@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
-import com.iptech.dreamhousingloan.exception.MobileNumberNotFound;
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 
@@ -29,13 +29,5 @@ public class GlobalExceptionHandlerController {
 		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 	}
 	
-
-//	Mobile no excepation
-	@ExceptionHandler( MobileNumberNotFound.class)
-	public ResponseEntity<String> mobileNoHander( MobileNumberNotFound mnd) {
-		
-	String msg=	mnd.getMessage();
-			return new ResponseEntity<String>(msg, HttpStatus.BAD_REQUEST);
-	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
+import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -60,7 +61,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			e.setLast_Name(e.getLast_Name());
 		}
-//
+
 
 		String email=e.getEmail();
 		if(e.getEmail().endsWith("@gmail.com")) {
@@ -68,7 +69,13 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}else {
 			throw new invalidEmailException("invalidEmailException "+email);
 		}
-	
+		String mobileNo=String.valueOf(e.getMobileNo());
+		if(mobileNo.length()==10) {
+			System.out.println("valid no"+mobileNo);
+		}
+		else {
+			throw new InvalidMobileNoException("invalidMobileNoException  "+mobileNo);
+		}
 
 		Enquiry save = er.save(e);
 		return save;
@@ -120,8 +127,6 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	
 
 
- //public String sendMail(Enquiry e,int applicant_Id) {
-//Enquiry eq=er.findById(applicant_Id).get();	  
 	 //SimpleMailMessage simple= new SimpleMailMessage();
 	  
 	 // simple.setTo(toEmail); simple.setFrom(FORM_MAIL);

@@ -89,17 +89,5 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	}*/
 
 
-	// @Override
-	/*
-	 * public String sendMail(String toEmail) {
-	 * 
-	 * SimpleMailMessage simple= new SimpleMailMessage();
-	 * 
-	 * simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
-	 * simple.setSubject("Dream housing loan process");
-	 * simple.setText("****Your housing loan is sanctioned successfully****");
-	 * 
-	 * sender.send(simple); return "mail send successfully"; }
-	 */
-
+	
 }

@@ -4,11 +4,12 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.beans.factory.annotation.Value;
+//import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.iptech.dreamhousingloan.exception.MobileNumberNotFound;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
@@ -30,10 +31,35 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 	@Override
 	public Enquiry saveEnquiry(Enquiry e) {
+		
+		long num=e.getMobileNo();
+		 
+		 int count=0;
+		 
+		do
+		{
+			num=num/10;
+			count++;
+			
+		}
+		while(num!=0) ;
 
-		Enquiry save = er.save(e);
-		return save;
-	}
+		if(count==10)
+		{
+	  return   er.save(e);
+	
+	    }
+		else 
+		{
+			 throw new MobileNumberNotFound("particular Enquiry not found:" );
+		}
+			
+		}
+
+
+//		Enquiry save = er.save(e);
+//		return save;
+//	}
 
 	@Override
 
@@ -96,4 +122,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	 * sender.send(simple); return "mail send successfully"; }
 	 */
 
+
+
+	
 }

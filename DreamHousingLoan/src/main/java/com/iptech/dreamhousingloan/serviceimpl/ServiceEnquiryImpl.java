@@ -31,7 +31,22 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :"+adharNo);
 		}
-
+//written by nisha
+		if(e.getFirst_Name()!=e.getFirst_Name().toUpperCase())
+		{ String name= e.getFirst_Name().toUpperCase();
+			e.setFirst_Name(name);
+			}
+		else {
+			e.setFirst_Name(e.getFirst_Name());
+		}
+		if(e.getLast_Name()!=e.getLast_Name().toUpperCase())
+		{ String lname= e.getLast_Name().toUpperCase();
+			e.setLast_Name(lname);
+			}
+		else {
+			e.setLast_Name(e.getLast_Name());
+		}
+		//
 		Enquiry save = er.save(e);
 		return save;
 	}

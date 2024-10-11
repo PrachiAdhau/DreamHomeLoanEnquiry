@@ -23,9 +23,6 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt{
 	}
 
 
-	
-	
-
 	public Enquiry getSingleDataMethod(int id) {
 		Enquiry e= er.findById(id).get();
 		return e;}

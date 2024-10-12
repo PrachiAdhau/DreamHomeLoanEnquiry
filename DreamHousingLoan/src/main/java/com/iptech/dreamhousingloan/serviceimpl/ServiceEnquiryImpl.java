@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
-<<<<<<< HEAD
+
 import com.iptech.dreamhousingloan.exception.InvalidAgeException;
-=======
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
@@ -70,7 +70,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}else {
 			throw new invalidEmailException("invalidEmailException "+email);
 		}
-<<<<<<< HEAD
+
 		// Age validation
 	    if (e.getAge() < 18 || e.getAge() > 60) {
 	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
@@ -81,7 +81,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	    }
 
 	
-=======
+
 		String mobileNo=String.valueOf(e.getMobileNo());
 		if(mobileNo.length()==10) {
 			System.out.println("valid no"+mobileNo);
@@ -89,7 +89,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		else {
 			throw new InvalidMobileNoException("invalidMobileNoException  "+mobileNo);
 		}
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
+
 
 		Enquiry save = er.save(e);
 		return save;

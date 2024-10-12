@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
-<<<<<<< HEAD
+
 import com.iptech.dreamhousingloan.exception.InvalidAgeException;
-=======
+
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
+
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
 
@@ -33,7 +33,7 @@ public class GlobalExceptionHandlerController {
 		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 	}
 	
-<<<<<<< HEAD
+
 	@ExceptionHandler(InvalidAgeException.class)
 	public ResponseEntity<String> invalidAgeHandle(InvalidAgeException aie)
 	{
@@ -41,7 +41,7 @@ public class GlobalExceptionHandlerController {
 		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 	}
 
-=======
+
 		@ExceptionHandler(InvalidMobileNoException.class)
 		public ResponseEntity<String>handelinvalidMobileNo(InvalidMobileNoException inm)
 		{
@@ -49,6 +49,5 @@ public class GlobalExceptionHandlerController {
 			return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 		}
 	}
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
 
 

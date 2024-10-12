@@ -68,7 +68,7 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		}
 		// Age validation
 	    if (e.getAge() < 18 || e.getAge() > 60) {
-	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age should be between 18 and 60.");
+	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid because less 18 or greater than 60");
 	    }
 	    else
 	    {

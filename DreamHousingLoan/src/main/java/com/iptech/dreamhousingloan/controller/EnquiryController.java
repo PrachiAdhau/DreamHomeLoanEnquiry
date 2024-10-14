@@ -69,15 +69,7 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
 	}
-//	
-//	@GetMapping("/getCibilDetails")
-//	public ResponseEntity<Cibil> getCibilDetails()
-//	{
-//		String url="http://localhost:9099/getCibilDetails";
-//		Cibil cl=rt.getForObject(url,Cibil.class);
-//		System.out.println(cl);
-//		return new ResponseEntity<Cibil>(cl,HttpStatus.OK);
-//	}
+
 
 }	
 	 

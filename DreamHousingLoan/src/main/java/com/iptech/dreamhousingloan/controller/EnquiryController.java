@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import com.iptech.dreamhousingloan.model.Cibil;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 
@@ -26,6 +28,8 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 @RequestMapping("/enquiry")
 public class EnquiryController {
 	
+	@Autowired
+	RestTemplate rt;
 	@Autowired
 	ServiceEnquiryInt sei;
 	// post method add
@@ -65,6 +69,15 @@ public class EnquiryController {
 		return new ResponseEntity<List<Enquiry>>(list,HttpStatus.OK);
 
 	}
+//	
+//	@GetMapping("/getCibilDetails")
+//	public ResponseEntity<Cibil> getCibilDetails()
+//	{
+//		String url="http://localhost:9099/getCibilDetails";
+//		Cibil cl=rt.getForObject(url,Cibil.class);
+//		System.out.println(cl);
+//		return new ResponseEntity<Cibil>(cl,HttpStatus.OK);
+//	}
 
 }	
 	 

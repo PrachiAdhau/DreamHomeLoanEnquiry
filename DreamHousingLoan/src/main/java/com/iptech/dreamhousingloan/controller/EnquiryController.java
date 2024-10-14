@@ -39,7 +39,7 @@ public class EnquiryController {
 		Enquiry en=sei.saveEnquiry(e); 
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
 	}
-		
+	//delete mapping	
 	@DeleteMapping("/del/{applicant_Id}")	
 	public ResponseEntity<String> deleteSingleData(@PathVariable int applicant_Id){
 		

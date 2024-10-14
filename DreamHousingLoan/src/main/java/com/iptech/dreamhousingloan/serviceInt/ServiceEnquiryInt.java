@@ -18,6 +18,5 @@ public interface ServiceEnquiryInt {
 
 	public Enquiry editEnquiry(Enquiry e);
 
-	// public String sendMail(String toEmail);
 
 }

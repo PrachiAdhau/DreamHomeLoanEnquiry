@@ -5,23 +5,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.mail.SimpleMailMessage;
-//import org.springframework.mail.javamail.JavaMailSender;
-
-//import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import org.springframework.stereotype.Service;
 
-
 import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
-
-
-
 
 //import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,12 +23,9 @@ import com.iptech.dreamhousingloan.exception.InvalidAdharNoException;
 
 import com.iptech.dreamhousingloan.exception.InvalidAgeException;
 
-
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
 
 import com.iptech.dreamhousingloan.exception.InvalidPancardException;
-
-
 
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
 
@@ -69,11 +58,11 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			throw new InvalidAdharNoException("InvalidAdharNoException :" + adharNo);
 		}
-		
-		
 
+		// First n last name convert lower to upper case
 		if (e.getFirst_Name() != e.getFirst_Name().toUpperCase()) {
 			String name = e.getFirst_Name().toUpperCase();
+
 			e.setFirst_Name(name);
 		} else {
 			e.setFirst_Name(e.getFirst_Name());
@@ -85,60 +74,51 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			e.setLast_Name(e.getLast_Name());
 		}
 
-
-
+		// Gmail exception
 		String email = e.getEmail();
 		if (e.getEmail().endsWith("@gmail.com")) {
+
 			System.out.println("gmail is correct");
 		} else {
 			throw new invalidEmailException("invalidEmailException " + email);
 		}
 
-
 		// Age validation
-	    if (e.getAge() < 18 || e.getAge() > 60) {
-	        throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
-	    }
-	    else
-	    {
-	    	System.out.println("Age is valid");
-	    }
-
-	
-
-		String mobileNo=String.valueOf(e.getMobileNo());
-		if(mobileNo.length()==10) {
-			System.out.println("valid no"+mobileNo);
+		if (e.getAge() < 18 || e.getAge() > 60) {
+			throw new InvalidAgeException("Invalid age: " + e.getAge() + ". Age is Invalid");
+		} else {
+			System.out.println("Age is valid");
 		}
-		else {
-			throw new InvalidMobileNoException("invalidMobileNoException  "+mobileNo);
+
+		// Mobile no exception
+		String mobileNo = String.valueOf(e.getMobileNo());
+		if (mobileNo.length() == 10) {
+			System.out.println("valid no" + mobileNo);
+		} else {
+			throw new InvalidMobileNoException("invalidMobileNoException  " + mobileNo);
 		}
-		
-		String pancardNo=e.getPancardNo();
-		if(pancardNo.length()==10) {
-			Pattern pattern=Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]");
-			Matcher matcher=pattern.matcher(pancardNo);
-			if(matcher.matches())
+
+		// PanCard exception
+		String pancardNo = e.getPancardNo();
+		if (pancardNo.length() == 10) {
+			Pattern pattern = Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]");
+			Matcher matcher = pattern.matcher(pancardNo);
+			if (matcher.matches())
 				System.out.println("valid pancard");
 			else
-				throw new InvalidPancardException("InvalidPancardException"+pancardNo);
-		}
-		else {
-			
-			throw new InvalidPancardException("InvalidPancardException  "+pancardNo);
-		}
+				throw new InvalidPancardException("InvalidPancardException" + pancardNo);
+		} else {
 
-
-		Enquiry save = er.save(e);
-		return save;
+			throw new InvalidPancardException("InvalidPancardException  " + pancardNo);
+		}
+		return er.save(e);
 
 	}
-	
-	
 
 	@Override
 
 	public void deleteSingle(int applicant_Id) {
+
 		er.deleteById(applicant_Id);
 
 	}
@@ -184,27 +164,17 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			System.out.println("Data is not present");
 		}
 
-	
-/*	@Override
-	public String sendMail(String toEmail) {
-		
-        SimpleMailMessage simple= new SimpleMailMessage();
-		
-		simple.setTo(toEmail);
-		simple.setFrom(FORM_MAIL);
-		simple.setSubject("Dream housing loan process");
-		simple.setText("****Your housing loan is sanctioned successfully****");
-		
-		sender.send(simple);
-		return "mail send successfully";
-	}*/
-
-
-	
-
-	
-
-
+		/*
+		 * @Override public String sendMail(String toEmail) {
+		 * 
+		 * SimpleMailMessage simple= new SimpleMailMessage();
+		 * 
+		 * simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+		 * simple.setSubject("Dream housing loan process");
+		 * simple.setText("****Your housing loan is sanctioned successfully****");
+		 * 
+		 * sender.send(simple); return "mail send successfully"; }
+		 */
 
 	}
 
@@ -221,9 +191,9 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 	 * sender.send(simple); return "mail send successfully"; }
 	 */
 
-	 //SimpleMailMessage simple= new SimpleMailMessage();
-	  
-	 // simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
+	// SimpleMailMessage simple= new SimpleMailMessage();
+
+	// simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
 //	  simple.setSubject("Dream housing loan process");
 //	  simple.setText("****Your housing loan is sanctioned successfully****");
 //	  

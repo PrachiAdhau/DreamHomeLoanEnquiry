@@ -41,6 +41,7 @@ public class EnquiryController {
 	public ResponseEntity<Enquiry> addData(@RequestBody Enquiry e) {
 		Enquiry en = sei.saveEnquiry(e);
 		return new ResponseEntity<Enquiry>(en, HttpStatus.CREATED);
+		
 	}
 
 

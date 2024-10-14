@@ -101,13 +101,27 @@ public class EnquiryController {
 	
 	@GetMapping("/getCibilDetails")
 	public ResponseEntity<Cibil> getCibilDetails() {
-		String url = "http://localhost:9092/getCibilDetails";
+		String url = "http://localhost:9099/getCibilDetails";
 		Cibil cbl = rt.getForObject(url, Cibil.class);
 		System.out.println(cbl);
 		return new ResponseEntity<Cibil>(cbl, HttpStatus.OK);
 
 	}
 
+	@PutMapping("/getCibilbyeid/{id}")
+	public ResponseEntity<Enquiry> getCibilByEid(@PathVariable("id") int id) {
+		ResponseEntity<Cibil> cc = getCibilDetails();
+		Cibil cibil = cc.getBody();
+		
+		ResponseEntity<Enquiry> e=getSingleDataMethod(id);
+		Enquiry enq=e.getBody();
+		enq.setCibilScore(cibil);
+		sei.saveEnquiry(enq);
+
+		return new ResponseEntity<Enquiry>(enq,HttpStatus.OK);
+
+	}
+	
 	
 }
 

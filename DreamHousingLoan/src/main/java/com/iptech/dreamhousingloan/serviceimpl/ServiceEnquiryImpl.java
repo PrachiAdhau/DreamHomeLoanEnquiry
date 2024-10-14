@@ -78,7 +78,8 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			
 
 				String mobileNo=String.valueOf(e.getMobileNo());
-				if(mobileNo.length()==10) {
+				if(mobileNo.length()==10)
+				{
 					System.out.println("valid no"+mobileNo);
 				}
 				else {

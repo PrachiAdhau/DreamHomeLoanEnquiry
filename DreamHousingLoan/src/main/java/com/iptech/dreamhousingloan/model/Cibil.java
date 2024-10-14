@@ -15,11 +15,11 @@ import lombok.Data;
 public class Cibil {
 
 	@Id
-	private String cibil_Id;
+	private String cibilId;
 	private int cibilScore;
 	private Date cibilScoreDateandTime;
 	private String status;
-	private String cibilRemark;
+	private String remark;
 	
 }
 

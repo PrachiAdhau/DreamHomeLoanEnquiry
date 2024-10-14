@@ -12,11 +12,16 @@ public class DreamHousingLoanApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DreamHousingLoanApplication.class, args);
 	}
-	@Bean
-	public RestTemplate rt()
-	{
-		RestTemplate rt=new RestTemplate();
-		return rt;
-	}
 
+	
+	@Bean
+	
+	public RestTemplate rt() {
+		
+		 RestTemplate rs=new RestTemplate();
+		  return rs;
+	}
+	
+
+	
 }

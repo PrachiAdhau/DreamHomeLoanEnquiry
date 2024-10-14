@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+
 @Entity
 @Data
 public class Enquiry {
@@ -23,10 +24,8 @@ public class Enquiry {
 	private long adharNo;
 	private String address;
 	private String city;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-	private  Cibil cibilScore;
-	
-	
+	private Cibil cibilScore;
 
 }

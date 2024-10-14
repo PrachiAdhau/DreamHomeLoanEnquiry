@@ -5,35 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
-
-<<<<<<< HEAD
-//import org.springframework.web.bind.annotation.PathVariable;
-=======
-
-
->>>>>>> branch 'master' of https://github.com/PrachiAdhau/DreamHomeLoanEnquiry.git
-
-import org.springframework.web.bind.annotation.GetMapping;
-
-
-
-
-
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 import org.springframework.web.bind.annotation.PutMapping;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-
+import com.iptech.dreamhousingloan.model.Cibil;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 
@@ -42,6 +25,9 @@ import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 @RestController
 @RequestMapping("/enquiry")
 public class EnquiryController {
+	
+	@Autowired
+	RestTemplate rt;
 
 	@Autowired
 	ServiceEnquiryInt sei;
@@ -106,6 +92,15 @@ public class EnquiryController {
 
 	public void m1() {
 		System.out.println("m1 method");
+	}
+	
+	@GetMapping("/getCibilDetails")
+	public ResponseEntity<Cibil> getCibilDetails() {
+		String url = "http://localhost:9092/getCibilDetails";
+		Cibil cbl = rt.getForObject(url, Cibil.class);
+		System.out.println(cbl);
+		return new ResponseEntity<Cibil>(cbl, HttpStatus.OK);
+
 	}
 
 }

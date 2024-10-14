@@ -1,5 +1,7 @@
 package com.iptech.dreamhousingloan.model;
 
+import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,9 +15,9 @@ import lombok.Data;
 public class Cibil {
 
 	@Id
-	private int cibil_Id;
+	private String cibil_Id;
 	private int cibilScore;
-	private String cibilScoreDateandTime;
+	private Date cibilScoreDateandTime;
 	private String status;
 	private String cibilRemark;
 	

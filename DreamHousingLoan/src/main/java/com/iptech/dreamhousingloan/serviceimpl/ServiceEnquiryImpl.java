@@ -28,7 +28,7 @@ import com.iptech.dreamhousingloan.exception.InvalidAgeException;
 import com.iptech.dreamhousingloan.exception.InvalidMobileNoException;
 import com.iptech.dreamhousingloan.exception.InvalidPancardException;
 import com.iptech.dreamhousingloan.exception.invalidEmailException;
-
+import com.iptech.dreamhousingloan.model.Cibil;
 import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.repository.EnquiryRepository;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
@@ -209,8 +209,15 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		} else {
 			System.out.println("Data is not present");
 		}
-
-
+	}
+	
+	@Override
+	public Enquiry updateCibil(Enquiry e) 
+	{
+		er.save(e);
+		return er.findById(e.getApplicant_Id()).get();
+		
+		
 	}
 
 }
@@ -228,28 +235,4 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		 */
 
 	
-
-	// @Override
-	/*
-	 * public String sendMail(String toEmail) {
-	 * 
-	 * SimpleMailMessage simple= new SimpleMailMessage();
-	 * 
-	 * simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
-	 * simple.setSubject("Dream housing loan process");
-	 * simple.setText("****Your housing loan is sanctioned successfully****");
-	 * 
-	 * sender.send(simple); return "mail send successfully"; }
-	 */
-
-	// SimpleMailMessage simple= new SimpleMailMessage();
-
-	// simple.setTo(toEmail); simple.setFrom(FORM_MAIL);
-//	  simple.setSubject("Dream housing loan process");
-//	  simple.setText("****Your housing loan is sanctioned successfully****");
-//	  
-//	  sender.send(simple); 
-//	  
-//	  return "mail send successfully"; 
-//	 
 

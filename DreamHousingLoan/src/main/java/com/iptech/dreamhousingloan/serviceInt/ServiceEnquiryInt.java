@@ -2,6 +2,7 @@ package com.iptech.dreamhousingloan.serviceInt;
 
 import java.util.List;
 
+import com.iptech.dreamhousingloan.model.Cibil;
 import com.iptech.dreamhousingloan.model.Enquiry;
 
 public interface ServiceEnquiryInt {
@@ -17,6 +18,10 @@ public interface ServiceEnquiryInt {
 	public void editEnquiry(Enquiry e, int applicant_Id);
 
 	public Enquiry editEnquiry(Enquiry e);
+
+
+
+	public Enquiry updateCibil(Enquiry e);
 
 
 }

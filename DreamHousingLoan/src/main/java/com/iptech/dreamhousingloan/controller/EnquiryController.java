@@ -122,26 +122,18 @@ public class EnquiryController {
 
 	}
 	
+	@PutMapping("/updateCibilStatus/{applicant_Id}")
+	public ResponseEntity<String> updateCibil(@RequestBody Enquiry e, @PathVariable("applicant_Id") int applicant_Id)
+		{
+		    sei.updateCibil(e);
+			return new ResponseEntity<String>("Cibil status updated",HttpStatus.CREATED);
+			
+		}
 	
 }
 
 
-	/*@GetMapping("/send/{toEmail}")
-	public ResponseEntity<String> sendMail(@PathVariable String toEmail)
-	{
-		String s=sei.sendMail(toEmail);
-		return new ResponseEntity<String>(s,HttpStatus.OK);
-	}*/
-
-
 	
-//	  @GetMapping("/send/{toEmail}") public ResponseEntity<String>sendMail(@PathVariable String toEmail) { 
-//		  
-//		  String s=sei.sendMail(toEmail);
-//		  
-//	  return new ResponseEntity<String>(s,HttpStatus.OK); 
-//	  
-//	  }
 
 	
 

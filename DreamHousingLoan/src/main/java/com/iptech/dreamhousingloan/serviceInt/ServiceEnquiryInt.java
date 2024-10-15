@@ -23,5 +23,7 @@ public interface ServiceEnquiryInt {
 
 	public Enquiry updateCibil(Enquiry e);
 
+	void deleteAllEnquiry();
+
 
 }

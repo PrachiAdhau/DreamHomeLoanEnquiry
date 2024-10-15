@@ -130,6 +130,13 @@ public class EnquiryController {
 			
 		}
 	
+	@DeleteMapping("/delByAllEnquiry")
+	public ResponseEntity<String> deleteByAllEnquiry(){
+		sei.deleteAllEnquiry();
+		return new ResponseEntity<String>("delete enquiry",HttpStatus.OK);
+
+     }
+	
 }
 
 

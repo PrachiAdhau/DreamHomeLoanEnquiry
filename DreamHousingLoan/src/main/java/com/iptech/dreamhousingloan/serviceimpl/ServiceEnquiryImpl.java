@@ -220,6 +220,14 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		
 	}
 
+	
+	@Override
+	public void deleteAllEnquiry() {
+			
+			er.deleteAll();
+			
+		
+	}
 }
 
 		/*

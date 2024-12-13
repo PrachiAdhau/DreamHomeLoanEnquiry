@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import com.iptech.dreamhousingloan.model.Enquiry;
 import com.iptech.dreamhousingloan.serviceInt.ServiceEnquiryInt;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/enquiry")
 public class EnquiryController {
 	
@@ -137,10 +139,20 @@ public class EnquiryController {
 
      }
 	
+		
+		  @GetMapping("/getByCibilStatus/{status}") 
+		  public ResponseEntity<List<Enquiry>>  getEnquiriesByCibilStatus(@PathVariable("status") String status) 
+		  {
+		  List<Enquiry> enquiries = sei.getEnquiriesByCibilStatus(status); 
+		  return new  ResponseEntity<List<Enquiry>>(enquiries, HttpStatus.OK);
+		  }
+		 
+	
 }
 
 
 	
+
 
 	
 

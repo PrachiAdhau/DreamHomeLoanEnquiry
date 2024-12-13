@@ -157,7 +157,10 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 
 			throw new InvalidPancardException("InvalidPancardException  " + pancardNo);
 		}
+		
+	
 		return er.save(e);
+	
 
 
 	}
@@ -227,6 +230,13 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 			er.deleteAll();
 			
 		
+	}
+	@Override
+	public List<Enquiry> getEnquiriesByCibilStatus(String status) {
+		List<Enquiry> findAll = er.findAll();
+		
+		  return findAll.stream().filter(e -> e.getCibilScore().getStatus().equals(status)).toList();		
+		  
 	}
 }
 

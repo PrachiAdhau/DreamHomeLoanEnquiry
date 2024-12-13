@@ -25,5 +25,7 @@ public interface ServiceEnquiryInt {
 
 	void deleteAllEnquiry();
 
+	public List<Enquiry> getEnquiriesByCibilStatus(String status);
+
 
 }

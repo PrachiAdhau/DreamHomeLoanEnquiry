@@ -147,7 +147,15 @@ public class EnquiryController {
 		  return new  ResponseEntity<List<Enquiry>>(enquiries, HttpStatus.OK);
 		  }
 		 
-	
+	   
+	      
+	      @GetMapping("/getenqCibilNullvalue/without-cibil")
+		  public ResponseEntity<List<Enquiry>> getEnquiryCibilNull()
+		  {
+    	  List<Enquiry> enq=sei.getEnquiryCibilNull();
+			return  new ResponseEntity<List<Enquiry>>(enq,HttpStatus.OK);
+			  
+		  }
 }
 
 

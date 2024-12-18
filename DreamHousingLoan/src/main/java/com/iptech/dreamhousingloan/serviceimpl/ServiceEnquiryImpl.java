@@ -238,6 +238,18 @@ public class ServiceEnquiryImpl implements ServiceEnquiryInt {
 		  return findAll.stream().filter(e -> e.getCibilScore().getStatus().equals(status)).toList();		
 		  
 	}
+	
+//	public List<Enquiry> getEnquiryCibilNull(Cibil cibilScore) {
+//		List<Enquiry> all=er.findAll();
+//		return all.stream().filter(e -> e.getCibilScore().equals(cibilScore)).toList();
+//		
+//	}
+	
+	public List<Enquiry> getEnquiryCibilNull() {
+		List<Enquiry> all=er.findByCibilScore();
+		return all;
+		
+	}
 }
 
 		/*

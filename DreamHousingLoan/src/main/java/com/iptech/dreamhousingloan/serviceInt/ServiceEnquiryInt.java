@@ -27,5 +27,7 @@ public interface ServiceEnquiryInt {
 
 	public List<Enquiry> getEnquiriesByCibilStatus(String status);
 
+	public List<Enquiry> getEnquiryCibilNull();
+
 
 }
